@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="SIMS_2021.View.PrikazPacijenata"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_2021.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ScrollViewer   HorizontalAlignment="Left" Height="408" Margin="32,46,0,0" VerticalAlignment="Top" Width="760" Background="White" Grid.Column="1" Grid.Row="1">
+            <FlowDocumentReader UseLayoutRounding="True" SnapsToDevicePixels="True" Height="400" Width="755">
+                <FlowDocumentReader.Resources>
+                    <Style TargetType="TableCell">
+                        <Setter Property="TextAlignment" Value="Center"/>
+                    </Style>
+                </FlowDocumentReader.Resources>
+                <FlowDocument>
+                    <Table CellSpacing="0">
+                        <Table.Columns>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                            <TableColumn/>
+                        </Table.Columns>
+                        <TableRowGroup>
+                            <TableRow>
+                                <TableCell BorderBrush="Black" BorderThickness="1">
+                                    <Paragraph FontWeight="Bold">Category</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
+                                    <Paragraph FontWeight="Bold">A</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
+                                    <Paragraph FontWeight="Bold">B</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
+                                    <Paragraph FontWeight="Bold">C</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1">
+                                    <Paragraph FontWeight="Bold">Subscription</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>Monthly</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>Yearly</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>Monthly</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1" TextAlignment="Center">
+                                    <Paragraph FontWeight="Bold">Price</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$120.00</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$1000.00</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$130.00</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1" TextAlignment="Center">
+                                    <Paragraph FontWeight="Bold">Price</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$120.00</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$1000.00</Paragraph>
+                                </TableCell>
+                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
+                                    <Paragraph>$130.00</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                        </TableRowGroup>
+                    </Table>
+                </FlowDocument>
+            </FlowDocumentReader>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,111 @@
+﻿<UserControl x:Class="SIMS_2021.View.Homepage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_2021.View"
+             xmlns:viewmodels="clr-namespace:SIMS_2021.ViewModels.Lekar"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Height="523.333" >
+
+    <Grid Height="522" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="825"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,821,-13" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="97*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9CA4BF" Offset="0.506"/>
+                    <GradientStop Color="#FFD4C3C3"/>
+                    <GradientStop Color="#FF6A6A6A" Offset="0.927"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid.Effect>
+                <DropShadowEffect Color="White" RenderingBias="Quality" ShadowDepth="1"/>
+            </Grid.Effect>
+
+            <Grid Background="#FF666583" Grid.ColumnSpan="2">
+                <TextBlock Text="E-Bolnica" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Square721 Ex BT" FontSize="24" Foreground="#FFFFFBFB" RenderTransformOrigin="0.524,-0.632" Margin="26,70,22,2" Width="145"/>
+                <Image Margin="38,2,41,29">
+                    <Image.Source>
+                        <BitmapImage DecodePixelWidth="300" UriSource="/Icon/logo1.png" />
+                    </Image.Source>
+                </Image>
+            </Grid>
+
+            <Grid >
+                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
+                    <Button  Command="{Binding PatientsCommand}" Margin="7,128,8,-166" Height="43" Background="#FF3C5768" Click="Button_Click_2">
+                        <Grid Width="4">
+                            <materialDesign:PackIcon Kind= "AccountGroup" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
+                            <TextBlock Text="Prikaz pacijenata" Margin="-47,0,-73,0" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <Grid>
+
+                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
+                    <Button Margin="7,194,9,-235" Height="Auto" Background="#FF3C5768" >
+                        <Grid Width="4">
+                            <materialDesign:PackIcon Kind= "Pill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
+                            <TextBlock Text="Prihvati / odbij" Margin="-47,0,-73,0" />
+                        </Grid>
+                    </Button>
+
+                </StackPanel>
+            </Grid>
+
+            <Grid  >
+                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
+                    <Button Command="{Binding DrugsCommand}" Margin="7,258,9,-297" Height="40" Background="#FF3C5768">
+                        <Grid Width="4">
+                            <materialDesign:PackIcon Kind= "FileFind" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
+                            <TextBlock Text="Prikaz lekova" Margin="-47,0,-73,0" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+
+
+        <Grid x:Name="GridBarraTitulo" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#FF3C5768" Margin="0,0,0,496">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Background="{x:Null}">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Name="btn1" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                    <materialDesign:PackIcon Kind="Dice5"/>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" x:Name="Button_0" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                    <materialDesign:PackIcon Kind="Account" MouseDown="Button_Click0" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" x:Name="Button_1"  Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White">
+                    <materialDesign:PackIcon Kind="Power" MouseDown="Button_Click1"/>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+        <Viewbox Grid.Column="1" HorizontalAlignment="Left" Height="494" Margin="4,3,0,0" Grid.Row="1" VerticalAlignment="Top" Width="820" OpacityMask="#FFC5B8B8">
+            
+            <ContentControl Content="{Binding}"/>
+
+        </Viewbox>
+        
+    </Grid>
+</UserControl>
