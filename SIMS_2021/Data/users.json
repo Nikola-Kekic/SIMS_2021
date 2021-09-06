@@ -1,32 +1,42 @@
-﻿[
+[
 	{
-	  "jmbg": "5546161611332",
-	  "email": "mirko@gmail.com",
-	  "password": "mirko",
-	  "name": "Mirko",
-	  "lastName": "Mirkovic",
-	  "mobileNumber": "0668743214",
-	  "userType": 0,
-	  "id": 1
+		"JMBG": "5546161611332",
+		"Email": "mirko@gmail.com",
+		"Password": "mirko",
+		"Name": "Mirko",
+		"LastName": "Mirkovic",
+		"MobileNumber": "0668743214",
+		"UserType": 0,
+		"Id": 1
 	},
 	{
-	  "jmbg": "3648991711507",
-	  "email": "marina@gmail.com",
-	  "password": "marina",
-	  "name": "Marina",
-	  "lastName": "Miric",
-	  "mobileNumber": "0623248290",
-	  "userType": 1,
-	  "id": 2
+		"JMBG": "3648991711507",
+		"Email": "marina@gmail.com",
+		"Password": "marina",
+		"Name": "Marina",
+		"LastName": "Miric",
+		"MobileNumber": "0623248290",
+		"UserType": 1,
+		"Id": 2
 	},
 	{
-	  "jmbg": "4948161211561",
-	  "email": "marko@gmail.com",
-	  "password": "marko",
-	  "name": "Marko",
-	  "lastName": "Markovic",
-	  "mobileNumber": "0644747268",
-	  "userType": 2,
-	  "id": 3
+		"JMBG": "4948161211561",
+		"Email": "marko@gmail.com",
+		"Password": "marko",
+		"Name": "Marko",
+		"LastName": "Markovic",
+		"MobileNumber": "0644747268",
+		"UserType": 2,
+		"Id": 3
+	},
+	{
+		"JMBG": "123456789101",
+		"Email": "nikola@gmail.com",
+		"Password": "nikola",
+		"Name": "Nikola",
+		"LastName": "Kekic",
+		"MobileNumber": "043829474",
+		"UserType": 2,
+		"Id": 4
 	}
 ]

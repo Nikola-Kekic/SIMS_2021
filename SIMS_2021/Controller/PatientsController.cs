@@ -12,9 +12,14 @@ namespace SIMS_2021.Controller
     {
         private PatientService _patientService = new PatientService();
 
-        public List<User> GetAll() 
+        public List<User> GetAll()
         {
             return _patientService.GetAll();
-        } 
+        }
+        public bool AddPatient(User patient)
+        {
+            return _patientService.AddPatient(patient);
+        }
     }
 }
+

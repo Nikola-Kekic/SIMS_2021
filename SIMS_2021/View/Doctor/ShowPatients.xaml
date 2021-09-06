@@ -23,13 +23,10 @@
                 <DataGridTextColumn Header="Mobilni" Binding="{Binding MobileNumber}" Width="147"/>
 
   
-            
-                
             </DataGrid.Columns>
 
         </DataGrid>
-        <Button Content="Pretrazi pacijente" Margin="186,0,0,59" Command="{Binding SearchPatientsCommand}" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="128"/>
-        <Button Content="Izmeni pacijenta" Margin="461,0,0,61" Command="{Binding EditPatientsCommand}" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="128"/>
+        <Button Content="Dodaj pacijenta" Margin="616,0,0,72" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="138" Click="AddPatient"/>
 
     </Grid>
     <!--

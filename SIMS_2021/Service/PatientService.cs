@@ -25,5 +25,21 @@ namespace SIMS_2021.Service
 
             return users;
         }
+
+        public bool AddPatient(User patient)
+        {
+            bool taken = _repositoryFactory.GetUserRepository().GetAll()
+                .Any(x => x.JMBG.Equals(patient.JMBG) || x.Email.Equals(patient.Email));
+            if (taken)
+                return false;
+            
+            patient.UserType = UserType.Patient;
+
+            if (_repositoryFactory.GetUserRepository().Add(patient) != null)
+                return true;
+            else
+                return false;
+
+        }
     }
 }
