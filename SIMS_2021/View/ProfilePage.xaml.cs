@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SIMS_2021.View
 {
     /// <summary>
-    /// Interaction logic for PrihvatiOdbijLekove.xaml
+    /// Interaction logic for ProfilePage.xaml
     /// </summary>
-    public partial class PrihvatiOdbijLekove : UserControl
+    public partial class ProfilePage : UserControl
     {
-        public PrihvatiOdbijLekove()
+        public ProfilePage()
         {
             InitializeComponent();
         }

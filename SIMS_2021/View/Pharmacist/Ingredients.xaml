@@ -1,0 +1,35 @@
+﻿<Window x:Class="SIMS_2021.View.Pharmacist.Ingredients"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_2021.View.Pharmacist"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="400">
+    <Grid Background="White" Height="181" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="Ingredient" FontSize="20" Background="White" Foreground="Black" Grid.Row="0" Grid.Column="1">
+            Sastojak:
+        </TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Name}"/>
+
+        <TextBlock Name="Description" FontSize="20" Background="White" Foreground="Black" Grid.Row="1" Grid.Column="1">
+            Opis:
+        </TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding Description}"/>
+        <Button Name="Dodaj" Width="100" Grid.Row="4" Grid.Column="2" Click="Dodaj_Click" Grid.ColumnSpan="3" Margin="66,2,69,2">Dodaj</Button>
+    </Grid>
+</Window>

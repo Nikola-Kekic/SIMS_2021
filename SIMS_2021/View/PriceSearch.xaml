@@ -1,0 +1,34 @@
+﻿<Window x:Class="SIMS_2021.View.PriceSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_2021.View"
+        mc:Ignorable="d"
+        Title="PriceSearch" Height="330" Width="500">
+    <Grid Background="White" Height="181" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="Ingredient" FontSize="20" Background="White" Foreground="Black" Grid.Row="0" Grid.Column="1">
+            Cena od:
+        </TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding LowestPrice, Mode=TwoWay}"/>
+
+        <TextBlock x:Name="Description" FontSize="20" Background="White" Foreground="Black" Grid.Row="1" Grid.Column="1" Text="Cena do:"/>
+        <TextBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding HighestPrice, Mode=TwoWay}"/>
+        <Button Name="Pretrazi" Width="100" Grid.Row="4" Grid.Column="3" Click="Pretrazi_Click">Dodaj</Button>
+
+    </Grid>
+</Window>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIMS_2021.Model
 {
-    public class User
+    public class User : Entity
     {
         public string JMBG { get; set; }
         public string Email { get; set; }

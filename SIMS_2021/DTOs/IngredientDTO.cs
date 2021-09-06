@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIMS_2021.Model
+namespace SIMS_2021.DTOs
 {
-    public class Ingredient : Entity
+    public class IngredientDTO
     {
-        public Ingredient()
-        {
-        }
-
-        public Ingredient(string name, string description)
+        public IngredientDTO(string name, string description, int frequency)
         {
             Name = name;
             Description = description;
+            Frequency = frequency;
         }
+        
         public string Name { get; set; }
         public string Description { get; set; }
+        public int Frequency { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIMS_2021.Model
 {
-    public class Bill
+    public class Bill : Entity
     {
         public int Code { get; set; }
         public string DrugStore { get; set; }

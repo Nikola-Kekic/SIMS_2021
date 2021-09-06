@@ -1,10 +1,9 @@
-﻿<UserControl x:Class="SIMS_2021.View.Homepage"
+﻿<UserControl x:Class="SIMS_2021.View.Patient.HomepagePatient"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SIMS_2021.View"
-             xmlns:viewmodels="clr-namespace:SIMS_2021.ViewModels.Lekar"
+             xmlns:uc="clr-namespace:SIMS_2021.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="523.333" >
 
@@ -51,34 +50,27 @@
 
             <Grid >
                 <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
-                    <Button  Command="{Binding PatientsCommand}" Margin="7,128,8,-166" Height="43" Background="#FF3C5768" Click="Button_Click_2">
+                    <Button Margin="7,128,8,-166" Height="43" Background="#FF3C5768" Click="DrugsButton_Click">
                         <Grid Width="4">
                             <materialDesign:PackIcon Kind= "AccountGroup" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
-                            <TextBlock Text="Prikaz pacijenata" Margin="-47,0,-73,0" />
+                            <TextBlock Text="Prikaz lekova" Margin="-47,0,-73,0" />
                         </Grid>
                     </Button>
-                </StackPanel>
-            </Grid>
-
-            <Grid>
-
-                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
-                    <Button Margin="7,194,9,-235" Height="Auto" Background="#FF3C5768" >
-                        <Grid Width="4">
-                            <materialDesign:PackIcon Kind= "Pill" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
-                            <TextBlock Text="Prihvati / odbij" Margin="-47,0,-73,0" />
-                        </Grid>
-                    </Button>
-
                 </StackPanel>
             </Grid>
 
             <Grid  >
                 <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
-                    <Button Command="{Binding DrugsCommand}" Margin="7,258,9,-297" Height="40" Background="#FF3C5768">
+                    <Button Margin="7,128,9,-297" Height="40" Background="#FF3C5768" Click="IngredientsButton_Click">
                         <Grid Width="4">
                             <materialDesign:PackIcon Kind= "FileFind" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
-                            <TextBlock Text="Prikaz lekova" Margin="-47,0,-73,0" />
+                            <TextBlock Text="Prikaz sastojaka" Margin="-47,0,-73,0" />
+                        </Grid>
+                    </Button>
+                    <Button Name="BillsButton" Margin="7,245,9,-297" Height="40" Background="#FF3C5768" Click="BillsButton_Click">
+                        <Grid Width="4">
+                            <materialDesign:PackIcon Kind= "FileFind" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
+                            <TextBlock Text="Prikaz racuna" Margin="-47,0,-73,0" />
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -101,11 +93,16 @@
 
             </StackPanel>
         </Grid>
+
         <Viewbox Grid.Column="1" HorizontalAlignment="Left" Height="494" Margin="4,3,0,0" Grid.Row="1" VerticalAlignment="Top" Width="820" OpacityMask="#FFC5B8B8">
-            
+
             <ContentControl Content="{Binding}"/>
 
         </Viewbox>
-        
+
+        <uc:ProfilePage x:Name="Profile" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
+        <uc:ListDrugs Visibility="Hidden" x:Name="Drugs" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
+        <uc:ListIngredients Visibility="Hidden" x:Name="Ingredients" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
+
     </Grid>
 </UserControl>

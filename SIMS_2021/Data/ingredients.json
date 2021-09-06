@@ -1,0 +1,29 @@
+[
+
+	{
+		"Id":1,
+		"Name":"Laktozni sirup",
+		"Description":"Skrob"
+	}, 
+	{
+		"Id":2,
+		"Name":"Kafein",
+		"Description":"Kofein"
+	},
+	{
+		"Id":3,
+		"Name":"Karoten",
+		"Description":"Hemijski klasifikovano kao ugljovodonik i terpenoid"
+	},
+	{
+		"Id":4,
+		"Name":"L-karnitin",
+		"Description":"Aminokiselina"
+	},
+	{
+		"Id":5,
+		"Name":"Koren rodiole",
+		"Description":"Biljni koren"
+	}
+
+]

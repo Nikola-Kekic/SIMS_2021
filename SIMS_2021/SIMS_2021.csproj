@@ -80,8 +80,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -100,29 +102,65 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\DrugsController.cs" />
+    <Compile Include="Controller\IngredientsController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
+    <Compile Include="Controller\PatientsController.cs" />
+    <Compile Include="DTOs\IngredientDTO.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\Drug.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
+    <Compile Include="Repository\BillRepository.cs" />
+    <Compile Include="Repository\DrugRepository.cs" />
+    <Compile Include="Repository\IngredientRepository.cs" />
+    <Compile Include="Repository\Interfaces\IBillRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDrugRepository.cs" />
+    <Compile Include="Repository\Interfaces\IIngredientRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
+    <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repository\RepoFactory\FileRepositoryFactory.cs" />
+    <Compile Include="Repository\RepoFactory\RepositoryFactory.cs" />
     <Compile Include="Repository\Repository.cs" />
-    <Compile Include="ViewModels\Lekar\PrikazPacijenata.cs" />
-    <Compile Include="View\Homepage.xaml.cs">
-      <DependentUpon>Homepage.xaml</DependentUpon>
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Service\DrugService.cs" />
+    <Compile Include="Service\IngredientsService.cs" />
+    <Compile Include="Service\LoginService.cs" />
+    <Compile Include="Service\PatientService.cs" />
+    <Compile Include="View\Doctor\HomepageDoctor.xaml.cs">
+      <DependentUpon>HomepageDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListIngredients.xaml.cs">
+      <DependentUpon>ListIngredients.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LogIn.xaml.cs">
       <DependentUpon>LogIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PrihvatiOdbijLekove.xaml.cs">
-      <DependentUpon>PrihvatiOdbijLekove.xaml</DependentUpon>
+    <Compile Include="View\Patient\HomepagePatient.xaml.cs">
+      <DependentUpon>HomepagePatient.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PrikazLekova.xaml.cs">
-      <DependentUpon>PrikazLekova.xaml</DependentUpon>
+    <Compile Include="View\Pharmacist\HomepagePharmacist.xaml.cs">
+      <DependentUpon>HomepagePharmacist.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\PrikazPacijenata.xaml.cs">
-      <DependentUpon>PrikazPacijenata.xaml</DependentUpon>
+    <Compile Include="View\Pharmacist\Ingredients.xaml.cs">
+      <DependentUpon>Ingredients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pharmacist\NewDrug.xaml.cs">
+      <DependentUpon>NewDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PriceSearch.xaml.cs">
+      <DependentUpon>PriceSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ListDrugs.xaml.cs">
+      <DependentUpon>ListDrugs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\ShowPatients.xaml.cs">
+      <DependentUpon>ShowPatients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TransitionControl.xaml.cs">
       <DependentUpon>TransitionControl.xaml</DependentUpon>
@@ -139,7 +177,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Homepage.xaml">
+    <Page Include="View\Doctor\HomepageDoctor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ListIngredients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,15 +189,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PrihvatiOdbijLekove.xaml">
+    <Page Include="View\Patient\HomepagePatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PrikazLekova.xaml">
+    <Page Include="View\Pharmacist\HomepagePharmacist.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\PrikazPacijenata.xaml">
+    <Page Include="View\Pharmacist\Ingredients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pharmacist\NewDrug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PriceSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListDrugs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Doctor\ShowPatients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +244,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\drugs.json" />
+    <None Include="Data\users.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -216,9 +280,7 @@
   <ItemGroup>
     <Resource Include="Icon\medical-services.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Factory\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

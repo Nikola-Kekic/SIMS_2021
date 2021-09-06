@@ -1,0 +1,32 @@
+﻿[
+	{
+	  "jmbg": "5546161611332",
+	  "email": "mirko@gmail.com",
+	  "password": "mirko",
+	  "name": "Mirko",
+	  "lastName": "Mirkovic",
+	  "mobileNumber": "0668743214",
+	  "userType": 0,
+	  "id": 1
+	},
+	{
+	  "jmbg": "3648991711507",
+	  "email": "marina@gmail.com",
+	  "password": "marina",
+	  "name": "Marina",
+	  "lastName": "Miric",
+	  "mobileNumber": "0623248290",
+	  "userType": 1,
+	  "id": 2
+	},
+	{
+	  "jmbg": "4948161211561",
+	  "email": "marko@gmail.com",
+	  "password": "marko",
+	  "name": "Marko",
+	  "lastName": "Markovic",
+	  "mobileNumber": "0644747268",
+	  "userType": 2,
+	  "id": 3
+	}
+]

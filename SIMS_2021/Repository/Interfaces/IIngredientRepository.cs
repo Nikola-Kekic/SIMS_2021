@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIMS_2021.Model
+namespace SIMS_2021.Repository.Interfaces
 {
-    public enum UserType
+    public interface IIngredientRepository
     {
-        Doctor,
-        Pharmacist,
-        Patient
     }
 }

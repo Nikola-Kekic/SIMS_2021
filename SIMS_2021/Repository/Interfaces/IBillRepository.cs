@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIMS_2021.ViewModels.Lekar
+namespace SIMS_2021.Repository.Interfaces
 {
-    public class PrikazPacijenata
+    public interface IBillRepository 
     {
-
     }
 }

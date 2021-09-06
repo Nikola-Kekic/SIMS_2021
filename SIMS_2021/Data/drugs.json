@@ -1,0 +1,123 @@
+[
+	{
+		"Code": "01",
+		"Name": "XYZAL",
+		"Producer": "Bayer",
+		"Price": 560.0,
+		"Quantity": 20,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": true,
+		"Deleted": false,
+		"Id": 1
+	},
+	{
+		"Code": "02",
+		"Name": "OMEPROL",
+		"Producer": "Zdravlje a.d",
+		"Price": 234.2,
+		"Quantity": 50,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": true,
+		"Deleted": false,
+		"Id": 2
+	},
+	{
+		"Code": "03",
+		"Name": "NOLPAZA",
+		"Producer": "Krka, Tovarna, Zdravil, d.d.",
+		"Price": 240.2,
+		"Quantity": 122,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 3
+	},
+	{
+		"Code": "04",
+		"Name": "LAKTULOZA RP ",
+		"Producer": "Hemofarm a.d",
+		"Price": 428.5,
+		"Quantity": 40,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 4
+	},
+	{
+		"Code": "05",
+		"Name": "LOPERAMID ACTAVIS",
+		"Producer": "Zdravlje a.d",
+		"Price": 189.9,
+		"Quantity": 16,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 5
+	},
+	{
+		"Code": "06",
+		"Name": "Bromazepan",
+		"Producer": "Galenika a.d.",
+		"Price": 980.0,
+		"Quantity": 58,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 6
+	},
+	{
+		"Code": "07",
+		"Name": "Kafetin",
+		"Producer": "Bayer",
+		"Price": 469.0,
+		"Quantity": 23,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob",
+			"Kafein": "Kofein"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 7
+	},
+	{
+		"Code": "08",
+		"Name": "Brufen",
+		"Producer": "Hemofarm a.d.",
+		"Price": 622.0,
+		"Quantity": 21,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob",
+			"Karoten": "Hemijski klasifikovano kao ugljovodonik i terpenoid",
+			"Koren rodiole": "Biljni koren"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 8
+	},
+	{
+		"Code": "09",
+		"Name": "Probiotik",
+		"Producer": "Hemofarm",
+		"Price": 560.0,
+		"Quantity": 41,
+		"Ingredients": {
+			"Laktozni sirup": "Skrob",
+			"L-karnitin": "Aminokiselina"
+		},
+		"Accepted": false,
+		"Deleted": false,
+		"Id": 9
+	}
+]

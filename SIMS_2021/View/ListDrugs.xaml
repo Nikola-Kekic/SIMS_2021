@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="SIMS_2021.View.ListDrugs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_2021.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+
+    <Grid>
+        <DataGrid x:Name="DrugDataGrid" Margin="35,93,34,119" IsReadOnly="True" 
+                  AutoGenerateColumns="False" Background="#FFC5BEDA">
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DoubleClickComand}" />
+            </DataGrid.InputBindings>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Sifra" Binding="{Binding Code}" Width="147"/>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Name}" Width="147"/>
+                <DataGridTextColumn Header="Proizvodjac" Binding ="{Binding Producer}" Width="147"/>
+                <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="147"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding Quantity}" Width="147"/>
+                <DataGridTextColumn Header="Sastojci" Binding="{Binding Ingredient.Name}" Width="147"/> 
+                <DataGridTextColumn Header="Prihvacen" Binding="{Binding Accepted}" Width="147"/>
+
+
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Click="Button_Click_SearchIngredients" Content="Pretraga po sastojcima" Margin="572,0,0,55" Command="{Binding SearchDrugsCommand}" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="183"/>
+        <materialDesign:PackIcon Name="SearchButton2" Kind="Search" Margin="125,42,0,0" Height="27" Width="34" />
+
+
+        <TextBox Name="Search" Background="Transparent" HorizontalContentAlignment="Center" VerticalAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="176" TabIndex="5" Margin="181,17,443,409" TextChanged="TextSearch" />
+        <materialDesign:PackIcon Name="SearchButton1" Kind="Search" Margin="125,42,0,0" Height="27" Width="34" />
+
+        <ComboBox Name="DrugFields" HorizontalAlignment="Left" Height="36" Margin="586,34,0,0" VerticalAlignment="Top" Width="152" SelectedItem="{Binding SearchParameterSelected, Mode=TwoWay}" SelectionChanged="DrugFields_SelectionChanged">
+        </ComboBox>
+        <Label Content="Parametri pretrage:" HorizontalAlignment="Left" Height="36" Margin="455,38,0,0" VerticalAlignment="Top" Width="129"/>
+        <TextBox x:Name="Search_Ingredients" Background="Transparent" HorizontalContentAlignment="Center" VerticalAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="430" TabIndex="5" Margin="88,378,282,44" Height="28" />
+        <Button Click="Button_Click_SearchPrice" Content="Pretraga po ceni" Margin="572,0,0,9" Command="{Binding SearchDrugsPriceCommand}" Height="33" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="183"/>
+
+    </Grid>
+</UserControl>

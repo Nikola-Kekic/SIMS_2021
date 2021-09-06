@@ -82,8 +82,8 @@
         </Rectangle>
         <Label HorizontalAlignment="Center" Height="34" Margin="303,240,587,0" Name="jmbgLabel" Content="JMBG: " VerticalAlignment="Top" Width="160" FontSize="24" FontFamily="Orbitron" Foreground="Black"/>
         <Label HorizontalAlignment="Center" Height="34" Margin="302,295,588,0" Name="passwordLabel" Content="Lozinka: " VerticalAlignment="Top" Width="160" FontSize="24" FontFamily="Orbitron" Foreground="Black"/>
-        <TextBox Background="Transparent" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" x:Name="LocalJmbgBox" Height="36" Width="216" TabIndex="5" Margin="523,190,311,171" />
-        <PasswordBox Background="Transparent" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" x:Name="LocalPasswordBox" Height="36" Width="216" TabIndex="5" Margin="523,293,311,171" />
+        <TextBox Name="JMBG" Background="Transparent" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center"  Height="36" Width="216" TabIndex="5" Margin="523,190,311,171" />
+        <PasswordBox Name="Password" Background="Transparent" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" Height="36" Width="216" TabIndex="5" Margin="523,293,311,171" />
         <Button x:Name="LocalLoginButton" Content="Prijava" Width="198" Height="36" Margin="417,379,435,85" TabIndex="8" Click="Button_Click" FontSize="20" FontFamily="Orbitron" Background="#FF1B3E55" />
 
     </Grid>

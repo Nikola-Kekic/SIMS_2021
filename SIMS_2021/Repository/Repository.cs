@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace SIMS_2021.Repository
 {
-    public class Repository<Entity> : IRepository<Entity> where Entity : global::SIMS_2021.Model.Entity
+    public abstract class Repository<Entity> : IRepository<Entity> where Entity : global::SIMS_2021.Model.Entity
     {
-        public string EntityPath { get; set; } 
+        protected string EntityPath { get; set; }
+
         public Entity Add(Entity newEntity)
         {
             newEntity = GenerateId(newEntity);
