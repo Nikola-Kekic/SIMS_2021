@@ -23,6 +23,7 @@ namespace SIMS_2021.View
     /// </summary>
     public partial class ListDrugs : UserControl
     {
+
         private CollectionViewSource _itemSourceList;
         public string SearchParameterSelected { get; set; }
         public float LowestPrice { get; set; }
@@ -30,14 +31,30 @@ namespace SIMS_2021.View
         public string SearchString { get; set; }
         public string TextIngredients { get; set; }
 
+        private User _loggedInUser;
+
         private List<string> _drugFieldsStrings;
         public ListDrugs()
         {
             SearchParameterSelected = "";
             _drugFieldsStrings = typeof(Drug).GetProperties().Select(x => x.Name)
-                .Where(x => x != "Id" && x != "Deleted" && x != "Ingredients" && x != "Price").ToList();
+                .Where(x => x != "Id" && x != "Deleted" && x != "Accepted" && x != "Ingredients" && x != "Price").ToList();
+
+
             InitializeComponent();
             FillDrugsComboBox();
+        }
+
+        public void SaveCurrentUser(User user)
+        {
+            _loggedInUser = user;
+
+            if (_loggedInUser.UserType.Equals(UserType.Pharmacist))
+            {
+                _drugFieldsStrings.Add("Accepted");
+                DrugFields.Items.Clear();
+                FillDrugsComboBox();
+            }
         }
 
         private void FillDrugsComboBox()
@@ -74,6 +91,14 @@ namespace SIMS_2021.View
                 ICollectionView Itemlist = _itemSourceList.View;
 
                 this.DrugDataGrid.ItemsSource = Itemlist;
+
+                if (_loggedInUser.UserType.Equals(UserType.Pharmacist))
+                {
+                    DataGridTextColumn textColumn = new DataGridTextColumn();
+                    textColumn.Header = "Odobren";
+                    textColumn.Binding = new Binding("Accepted");
+                    DrugDataGrid.Columns.Add(textColumn);
+                }
             }
 
         }

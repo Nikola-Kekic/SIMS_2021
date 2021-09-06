@@ -27,9 +27,6 @@
                 <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="147"/>
                 <DataGridTextColumn Header="Kolicina" Binding="{Binding Quantity}" Width="147"/>
                 <DataGridTextColumn Header="Sastojci" Binding="{Binding Ingredient.Name}" Width="147"/> 
-                <DataGridTextColumn Header="Prihvacen" Binding="{Binding Accepted}" Width="147"/>
-
-
 
             </DataGrid.Columns>
 

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:SIMS_2021.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -21,97 +22,17 @@
                 <DataGridTextColumn Header="Ime" Binding ="{Binding Name}" Width="147"/>
                 <DataGridTextColumn Header="Prezime" Binding="{Binding LastName}" Width="147"/>
                 <DataGridTextColumn Header="Mobilni" Binding="{Binding MobileNumber}" Width="147"/>
-
-  
             </DataGrid.Columns>
 
         </DataGrid>
+
+        <ComboBox Name="UserFields" HorizontalAlignment="Left" Height="36" Margin="586,34,0,0" VerticalAlignment="Top" Width="152" SelectedItem="{Binding SearchParameterSelected, Mode=TwoWay}" SelectionChanged="UserFields_SelectionChanged">
+        </ComboBox>
+        <Label Content="Parametri pretrage:" HorizontalAlignment="Left" Height="36" Margin="455,38,0,0" VerticalAlignment="Top" Width="129"/>
+        <TextBox Name="Search" Background="Transparent" HorizontalContentAlignment="Center" VerticalAlignment="Center"  HorizontalAlignment="Center" VerticalContentAlignment="Center" Width="176" TabIndex="5" Margin="181,17,443,409" TextChanged="TextSearch" />
+        <materialDesign:PackIcon Name="SearchButton1" Kind="Search" Margin="125,42,0,0" Height="27" Width="34" />
+
         <Button Content="Dodaj pacijenta" Margin="616,0,0,72" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="138" Click="AddPatient"/>
 
     </Grid>
-    <!--
-    <Grid>
-        <ScrollViewer   HorizontalAlignment="Left" Height="408" Margin="32,46,0,0" VerticalAlignment="Top" Width="760" Background="White" Grid.Column="1" Grid.Row="1">
-            <FlowDocumentReader UseLayoutRounding="True" SnapsToDevicePixels="True" Height="400" Width="755">
-                <FlowDocumentReader.Resources>
-                    <Style TargetType="TableCell">
-                        <Setter Property="TextAlignment" Value="Center"/>
-                    </Style>
-                </FlowDocumentReader.Resources>
-                <FlowDocument>
-                    <Table CellSpacing="0">
-                        <Table.Columns>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                            <TableColumn/>
-                        </Table.Columns>
-                        <TableRowGroup>
-                            <TableRow>
-                                <TableCell BorderBrush="Black" BorderThickness="1">
-                                    <Paragraph FontWeight="Bold">Category</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                    <Paragraph FontWeight="Bold">A</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                    <Paragraph FontWeight="Bold">B</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,1,1,1">
-                                    <Paragraph FontWeight="Bold">C</Paragraph>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1">
-                                    <Paragraph FontWeight="Bold">Subscription</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>Monthly</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>Yearly</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>Monthly</Paragraph>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1" TextAlignment="Center">
-                                    <Paragraph FontWeight="Bold">Price</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$120.00</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$1000.00</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$130.00</Paragraph>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell BorderBrush="Black" BorderThickness="1,0,1,1" TextAlignment="Center">
-                                    <Paragraph FontWeight="Bold">Price</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$120.00</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$1000.00</Paragraph>
-                                </TableCell>
-                                <TableCell BorderBrush="Black" BorderThickness="0,0,1,1">
-                                    <Paragraph>$130.00</Paragraph>
-                                </TableCell>
-                            </TableRow>
-                        </TableRowGroup>
-                    </Table>
-                </FlowDocument>
-            </FlowDocumentReader>
-        </ScrollViewer>
-    </Grid>
-    -->
 </UserControl>

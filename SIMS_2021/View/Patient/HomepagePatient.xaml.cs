@@ -68,6 +68,7 @@ namespace SIMS_2021.View.Patient
             this.Profile.Visibility = Visibility.Hidden;
             _drugs = _drugsController.GetAll();
             this.Drugs.DataContext = _drugs;
+            this.Drugs.SaveCurrentUser(_patient);
             this.Drugs.BindGrid(_drugs);
             this.Drugs.Visibility = Visibility.Visible;
         }
