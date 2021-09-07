@@ -9,5 +9,6 @@ namespace SIMS_2021.Repository.Interfaces
 {
     public interface IUserRepository
     {
+        List<User> GetByUserType(UserType userType);
     }
 }

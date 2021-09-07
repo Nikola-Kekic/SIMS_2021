@@ -1,0 +1,33 @@
+﻿<Window x:Class="SIMS_2021.View.Patient.ShowDrugsAndQuantity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_2021.View.Patient"
+        mc:Ignorable="d"
+        Title="ShowDrugsAndQuantity" Height="450" Width="800">
+    
+    <Grid Background="#e1dee4">
+        <DataGrid x:Name="BillsDataGrid" Margin="35,93,34,119" IsReadOnly="True" 
+                  AutoGenerateColumns="False" Background="#FFC5BEDA">
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DoubleClickComand}" />
+            </DataGrid.InputBindings>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+
+
+                <DataGridTextColumn Header="Sifra" Binding="{Binding Code}" Width="147"/>
+                <DataGridTextColumn Header="Cena" Binding="{Binding Price}" Width="147"/>
+                <DataGridTextColumn Header="Proizvodjac" Binding="{Binding Producer}" Width="147"/>
+                <DataGridTextColumn Header="Kolicina" Width="147" Binding="{Binding Quantity}"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</Window>

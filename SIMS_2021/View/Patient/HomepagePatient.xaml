@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:uc="clr-namespace:SIMS_2021.View"
+             xmlns:ucp="clr-namespace:SIMS_2021.View.Patient"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" Height="523.333" >
 
@@ -73,6 +74,12 @@
                             <TextBlock Text="Prikaz racuna" Margin="-47,0,-73,0" />
                         </Grid>
                     </Button>
+                    <Button x:Name="CartButton" Margin="7,315,9,-297" Height="40" Background="#FF3C5768" Click="CartButton_Click">
+                        <Grid Width="4">
+                            <materialDesign:PackIcon Kind= "Cart" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
+                            <TextBlock Text="Korpa" Margin="-47,0,-73,0" />
+                        </Grid>
+                    </Button>
                 </StackPanel>
             </Grid>
 
@@ -103,6 +110,8 @@
         <uc:ProfilePage x:Name="Profile" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
         <uc:ListDrugs Visibility="Hidden" x:Name="Drugs" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
         <uc:ListIngredients Visibility="Hidden" x:Name="Ingredients" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
-
+        <ucp:CartView Visibility="Hidden" x:Name="CartView" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
+        <ucp:ListBills Visibility="Hidden" x:Name="Bills" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
+        
     </Grid>
 </UserControl>

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIMS_2021.Repository.Interfaces
+namespace SIMS_2021.DTOs
 {
-    public interface IBillRepository 
+    public class LabelDTO
     {
-        int GenerateCode();
+        public int Property { get; set; }
     }
 }

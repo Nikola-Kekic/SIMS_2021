@@ -80,14 +80,7 @@
             </Grid>
 
             <Grid  >
-                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
-                    <Button Margin="7,310,9,-297" Height="40" Background="#FF3C5768">
-                        <Grid Width="4">
-                            <materialDesign:PackIcon Kind= "PillTablet" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="40" Width="22" />
-                            <TextBlock Text="Prihvaceni/odbijeni" Margin="-48,6,-72,4" />
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1"/>
             </Grid>
 
         </Grid>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="SIMS_2021.View.Doctor.RejectDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_2021.View.Doctor"
+        mc:Ignorable="d"
+        Title="RejectDialog" Height="450" Width="800">
+    <Grid Background="#FFA598BF">
+        <TextBox Text="{Binding Description}" HorizontalAlignment="Left" Height="227" Margin="122,59,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="554" Background="#FFE8DFDF"/>
+        <Button Content="Posalji" HorizontalAlignment="Left" Height="43" Margin="218,327,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_1"/>
+        <Button Content="Izadji" HorizontalAlignment="Left" Height="43" Margin="425,327,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_2"/>
+
+    </Grid>
+</Window>

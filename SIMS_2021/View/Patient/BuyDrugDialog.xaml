@@ -1,0 +1,17 @@
+﻿<Window x:Class="SIMS_2021.View.Patient.BuyDrugDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_2021.View.Patient"
+        mc:Ignorable="d"
+        Title="BuyDrugDialog" Height="230.74" Width="573.852">
+    <Grid Background="#e1dee4" Margin="0,0,2,-9">
+        <Label Content="Kolicina:" HorizontalAlignment="Left" Margin="42,52,0,0" VerticalAlignment="Top" FontSize="20" Width="116"/>
+
+
+        <TextBox x:Name="QuantityText" HorizontalAlignment="Left" Margin="177,52,0,0" VerticalAlignment="Top" FontSize="20" Width="346" Text="{Binding Quantity, Mode=TwoWay}"/>
+
+        <Button x:Name="BuyDrug" Content="Potvrdi" Click="BuyDrug_Click" HorizontalAlignment="Left" Margin="423,134,0,0" VerticalAlignment="Top" FontSize="20" Height="40" Width="100" />
+    </Grid>
+</Window>

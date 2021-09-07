@@ -18,5 +18,21 @@ namespace SIMS_2021.Repository
 
         }
 
+        public List<Bill> GetAllByUserId(long userId)
+        {
+            return GetAll().Where(x => x.UserId.Equals(userId)).ToList();
+        }
+
+        public int GenerateCode()
+        {
+            List<Bill> bills = GetAll();
+            var maxCode = 0;
+            if (bills != null && bills.Count > 0)
+            {
+                maxCode = bills.Select(x => x.Code).Max();
+
+            }
+            return ++maxCode;
+        }
     }
 }

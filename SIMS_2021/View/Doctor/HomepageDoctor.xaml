@@ -75,16 +75,9 @@
             </Grid>
 
             <Grid >
-                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1">
-                    <Button Margin="7,258,9,-297" Height="40" Background="#FF3C5768" Name="ManageDrugsButton" Click ="ManageDrugsButton_Click" >
-                        <Grid Width="4">
-                            <materialDesign:PackIcon Kind= "Ban" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
-                            <TextBlock Text="Prihvati / odbij" Margin="-47,0,-73,0" />
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                <StackPanel Grid.ColumnSpan="1" Grid.RowSpan="1"/>
             </Grid>
-            <Button Name="IngredientsButton" Margin="7,318,9,-257" Height="Auto" Background="#FF3C5768" Click ="IngredientsButton_Click" >
+            <Button Name="IngredientsButton" Margin="7,259,9,-198" Height="Auto" Background="#FF3C5768" Click ="IngredientsButton_Click" >
                 <Grid Width="4">
                     <materialDesign:PackIcon Kind= "FileFind" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-80,-1,62,0" Height="20" Width="22" />
                     <TextBlock Text="Prikaz sastojaka" Margin="-47,0,-73,0" />
@@ -118,7 +111,6 @@
         <ucd:ShowPatients Visibility="Hidden" x:Name="Patients" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
         <uc:ListDrugs Visibility="Hidden" x:Name="Drugs" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
         <uc:ListIngredients Visibility="Hidden" x:Name="Ingredients" Grid.Column="1" Margin="5,5,0,0" Grid.Row="1"/>
-
         
     </Grid>
 </UserControl>

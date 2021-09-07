@@ -1,8 +1,11 @@
-﻿using SIMS_2021.Model;
+﻿using SIMS_2021.Controller;
+using SIMS_2021.Model;
+using SIMS_2021.View.Doctor;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +18,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
+using System.Data;
+using SIMS_2021.View.Patient;
+using SIMS_2021.DTOs;
+using SIMS_2021.View.Pharmacist;
 
 namespace SIMS_2021.View
 {
@@ -31,20 +39,47 @@ namespace SIMS_2021.View
         public string SearchString { get; set; }
         public string TextIngredients { get; set; }
 
+        public DrugsController _drugController;
+
         private User _loggedInUser;
 
         private List<string> _drugFieldsStrings;
+        private Cart _cart;
+        private bool _addedButtons;
+
         public ListDrugs()
         {
             SearchParameterSelected = "";
+            
             _drugFieldsStrings = typeof(Drug).GetProperties().Select(x => x.Name)
                 .Where(x => x != "Id" && x != "Deleted" && x != "Accepted" && x != "Ingredients" && x != "Price").ToList();
-
-
+           
+            _drugController = new DrugsController();
             InitializeComponent();
             FillDrugsComboBox();
         }
+        public void SaveCurrentCart(Cart cart)
+        {
+            _cart = cart;
+        }
+        private void CheckBoxChanged(object sender, RoutedEventArgs e)
+        {
 
+            Drug clickedDrug = (Drug)(((CheckBox)sender).DataContext);
+            clickedDrug = _drugController.MenageAccepted(clickedDrug.Id, (bool)((CheckBox)sender).IsChecked);
+        }
+        private void ButtonReject(object sender, RoutedEventArgs e) 
+        {
+            RejectDialog reject = new RejectDialog();
+            Drug clickedDrug = (Drug)((Button)sender).DataContext;
+            reject.Show(clickedDrug.Id);
+        }
+        private void ButtonRejectReasone(object sender, RoutedEventArgs e)
+        {
+            RejectedReasone reject = new RejectedReasone();
+            Drug clickedDrug = (Drug)((Button)sender).DataContext;
+            reject.Show(clickedDrug.Id);
+        }
         public void SaveCurrentUser(User user)
         {
             _loggedInUser = user;
@@ -56,7 +91,6 @@ namespace SIMS_2021.View
                 FillDrugsComboBox();
             }
         }
-
         private void FillDrugsComboBox()
         {
             foreach (var field in _drugFieldsStrings)
@@ -94,13 +128,57 @@ namespace SIMS_2021.View
 
                 if (_loggedInUser.UserType.Equals(UserType.Pharmacist))
                 {
+                    DrugDataGrid.Columns[6].Visibility = Visibility.Collapsed;
+                    DrugDataGrid.Columns[7].Visibility = Visibility.Collapsed;
+
                     DataGridTextColumn textColumn = new DataGridTextColumn();
                     textColumn.Header = "Odobren";
                     textColumn.Binding = new Binding("Accepted");
                     DrugDataGrid.Columns.Add(textColumn);
                 }
+                else if (_loggedInUser.UserType.Equals(UserType.Patient))
+                {
+                    DrugDataGrid.Columns[6].Visibility = Visibility.Collapsed;
+                    DrugDataGrid.Columns[7].Visibility = Visibility.Collapsed;
+                    DrugDataGrid.Columns[8].Visibility = Visibility.Collapsed;
+
+                    if (!_addedButtons)
+                    {
+
+                        DataGridTemplateColumn buttonColumn = new DataGridTemplateColumn();
+                        DataTemplate buttonTemplate = new DataTemplate();
+                        FrameworkElementFactory buttonFactory = new FrameworkElementFactory(typeof(Button));
+                        buttonTemplate.VisualTree = buttonFactory;
+                        //add handler or you can add binding to command if you want to handle click
+                        buttonFactory.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler(OpenBuyDrugDialog));
+                        buttonFactory.SetValue(ContentProperty, "Dodaj u korpu");
+                        buttonColumn.CellTemplate = buttonTemplate;
+                        DrugDataGrid.Columns.Add(buttonColumn);
+
+                        _addedButtons = true;
+                    }
+
+                } 
             }
 
+        }
+        private void OpenBuyDrugDialog(object sender, RoutedEventArgs e)
+        {
+            BuyDrugDialog buyDrugDialog = new BuyDrugDialog();
+            Drug clickedDrug = (Drug)((Button)sender).DataContext;
+            buyDrugDialog.Show(clickedDrug, _loggedInUser, _cart);
+        }
+        private void Ingredients_Click(object sender, RoutedEventArgs e)
+        {
+            Drug clickedDrug = (Drug)((Button)sender).DataContext;
+            List<Ingredient> ingredients = new List<Ingredient>();
+            foreach (KeyValuePair<string, string> ingredient in clickedDrug.Ingredients)
+            {
+                ingredients.Add(new Ingredient { Name = ingredient.Key, Description = ingredient.Value });
+            }
+            ShowIngredients showIngredients = new ShowIngredients();
+            showIngredients.BindGrid(ingredients);
+            showIngredients.Show();
         }
 
         private void Filter(object sender, FilterEventArgs e)
@@ -252,5 +330,8 @@ namespace SIMS_2021.View
             }
             return foundDrugsAnd;
         }
+
+      
     }
+
 }

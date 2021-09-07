@@ -1,4 +1,5 @@
-﻿using SIMS_2021.Model;
+﻿using SIMS_2021.DTOs;
+using SIMS_2021.Model;
 using SIMS_2021.Service;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,14 @@ namespace SIMS_2021.Controller
         public bool AddPatient(User patient)
         {
             return _patientService.AddPatient(patient);
+        }
+        public int GetBoughtDrugsSum(long patientId)
+        {
+            return _patientService.GetBoughtDrugsSum(patientId);
+        }
+        public List<CartDTO> GetDrugsAndQuantity(Dictionary<long, int> cart)
+        {
+            return _patientService.GetDrugsAndQuantity(cart);
         }
     }
 }

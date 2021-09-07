@@ -102,15 +102,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controller\BillsController.cs" />
     <Compile Include="Controller\DrugsController.cs" />
     <Compile Include="Controller\IngredientsController.cs" />
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\PatientsController.cs" />
+    <Compile Include="Controller\RejectedController.cs" />
+    <Compile Include="DTOs\BillDTO.cs" />
+    <Compile Include="DTOs\Cart.cs" />
+    <Compile Include="DTOs\CartDTO.cs" />
+    <Compile Include="DTOs\DrugAndQuantityDTO.cs" />
     <Compile Include="DTOs\IngredientDTO.cs" />
+    <Compile Include="DTOs\LabelDTO.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\Drug.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Ingredient.cs" />
+    <Compile Include="Model\RejectedDrug.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserType.cs" />
     <Compile Include="Repository\BillRepository.cs" />
@@ -119,21 +127,28 @@
     <Compile Include="Repository\Interfaces\IBillRepository.cs" />
     <Compile Include="Repository\Interfaces\IDrugRepository.cs" />
     <Compile Include="Repository\Interfaces\IIngredientRepository.cs" />
+    <Compile Include="Repository\Interfaces\IRejectedDrugRepository.cs" />
     <Compile Include="Repository\Interfaces\IRepository.cs" />
     <Compile Include="Repository\Interfaces\IUserRepository.cs" />
+    <Compile Include="Repository\RejectedDrugRepository.cs" />
     <Compile Include="Repository\RepoFactory\FileRepositoryFactory.cs" />
     <Compile Include="Repository\RepoFactory\RepositoryFactory.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Service\BillService.cs" />
     <Compile Include="Service\DrugService.cs" />
     <Compile Include="Service\IngredientsService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\PatientService.cs" />
+    <Compile Include="Service\RejectedService.cs" />
     <Compile Include="View\Doctor\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Doctor\HomepageDoctor.xaml.cs">
       <DependentUpon>HomepageDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Doctor\RejectDialog.xaml.cs">
+      <DependentUpon>RejectDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ListIngredients.xaml.cs">
       <DependentUpon>ListIngredients.xaml</DependentUpon>
@@ -141,8 +156,20 @@
     <Compile Include="View\LogIn.xaml.cs">
       <DependentUpon>LogIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Patient\BuyDrugDialog.xaml.cs">
+      <DependentUpon>BuyDrugDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Patient\CartView.xaml.cs">
+      <DependentUpon>CartView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Patient\HomepagePatient.xaml.cs">
       <DependentUpon>HomepagePatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Patient\ListBills.xaml.cs">
+      <DependentUpon>ListBills.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Patient\ShowDrugsAndQuantity.xaml.cs">
+      <DependentUpon>ShowDrugsAndQuantity.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pharmacist\HomepagePharmacist.xaml.cs">
       <DependentUpon>HomepagePharmacist.xaml</DependentUpon>
@@ -152,6 +179,9 @@
     </Compile>
     <Compile Include="View\Pharmacist\NewDrug.xaml.cs">
       <DependentUpon>NewDrug.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pharmacist\RejectedReasone.xaml.cs">
+      <DependentUpon>RejectedReasone.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PriceSearch.xaml.cs">
       <DependentUpon>PriceSearch.xaml</DependentUpon>
@@ -164,6 +194,9 @@
     </Compile>
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ShowIngredients.xaml.cs">
+      <DependentUpon>ShowIngredients.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TransitionControl.xaml.cs">
       <DependentUpon>TransitionControl.xaml</DependentUpon>
@@ -188,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Doctor\RejectDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ListIngredients.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -196,9 +233,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Patient\BuyDrugDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Patient\CartView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\Patient\HomepagePatient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Patient\ListBills.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Patient\ShowDrugsAndQuantity.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Pharmacist\HomepagePharmacist.xaml">
       <SubType>Designer</SubType>
@@ -209,6 +262,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pharmacist\NewDrug.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pharmacist\RejectedReasone.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -227,6 +284,10 @@
     <Page Include="View\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ShowIngredients.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\TransitionControl.xaml">
       <SubType>Designer</SubType>
@@ -251,6 +312,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\bills.json" />
     <None Include="Data\drugs.json" />
     <None Include="Data\users.json" />
     <None Include="packages.config" />

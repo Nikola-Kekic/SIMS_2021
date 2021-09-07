@@ -14,6 +14,7 @@ namespace SIMS_2021.Repository.RepoFactory
         public abstract DrugRepository GetDrugRepository();
         public abstract IngredientRepository GetIngredientRepository();
         public abstract UserRepository GetUserRepository();
+        public abstract RejectedDrugRepository GetRejectedDrugRepository();
 
     }
 }

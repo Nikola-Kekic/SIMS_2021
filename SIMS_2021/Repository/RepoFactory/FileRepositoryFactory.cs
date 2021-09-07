@@ -14,7 +14,7 @@ namespace SIMS_2021.Repository.RepoFactory
         public DrugRepository DrugRepository { get; set; }
         public BillRepository BillRepository { get; set; }
         public IngredientRepository IngredientRepository { get; set; }
-
+        public RejectedDrugRepository RejectedDrugRepository { get; set; }
         public override UserRepository GetUserRepository()
         {
             if (UserRepository == null)
@@ -43,5 +43,15 @@ namespace SIMS_2021.Repository.RepoFactory
             else
                 return IngredientRepository;
         }
+
+        public override RejectedDrugRepository GetRejectedDrugRepository()
+        {
+            if (RejectedDrugRepository == null)
+                return new RejectedDrugRepository();
+            else
+                return RejectedDrugRepository;
+        }
+
+
     }
 }

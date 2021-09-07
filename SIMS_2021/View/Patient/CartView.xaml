@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SIMS_2021.View.Patient.CartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SIMS_2021.View.Patient"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#e1dee4">
+        <DataGrid x:Name="CartDataGrid" Margin="35,93,34,119" IsReadOnly="True" 
+                  AutoGenerateColumns="False" Background="#FFC5BEDA">
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DoubleClickComand}" />
+            </DataGrid.InputBindings>
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}"/>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Naziv leka" Binding="{Binding DrugName}" Width="147"/>
+                <DataGridTextColumn Header="Kolicina" Binding="{Binding Quantity}" Width="147"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Name="Kupi" Content="Kupi" Click="Kupi_Click" Margin="628,0,0,54" Height="35" VerticalAlignment="Bottom" Background="#FF3C5768" Foreground="White" HorizontalAlignment="Left" Width="123"/>
+
+    </Grid>
+</UserControl>

@@ -65,7 +65,13 @@ namespace SIMS_2021.Repository
         private Entity GenerateId(Entity entity) 
         {
             List<Entity> entities = GetAll();
-            var entityMaxId = entities.Select(x => x.Id).Max();
+            var entityIds = entities.Select(x => x.Id).ToList();
+            long entityMaxId = 0;
+            if (entityIds != null && entityIds.Count() > 0)
+            {
+                entityMaxId = entityIds.Max();
+            } 
+                
             entity.Id = ++entityMaxId;
 
             return entity;

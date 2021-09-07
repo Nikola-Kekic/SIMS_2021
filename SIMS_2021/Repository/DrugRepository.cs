@@ -20,5 +20,6 @@ namespace SIMS_2021.Repository
         {
             return this.GetAll().Where(x => x.Name.ToLower().Contains(name.ToLower())).ToList();
         }
+        
     }
 }

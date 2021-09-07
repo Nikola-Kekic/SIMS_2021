@@ -20,8 +20,14 @@ namespace SIMS_2021.Service
         public List<Drug> GetAll()
         {
             List<Drug> drugs = _repositoryFactory.GetDrugRepository().GetAll();
-            
+
             return drugs;
+        }
+        public Drug GetOne(long Id)
+        {
+            Drug drug = _repositoryFactory.GetDrugRepository().GetOne(Id);
+
+            return drug;
         }
 
         public bool Add(Drug drug)
@@ -53,6 +59,12 @@ namespace SIMS_2021.Service
                 return false;
 
             return true;
+        }
+        public void Update(long id, bool isChecked) 
+        {
+           Drug drug = _repositoryFactory.GetDrugRepository().GetOne(id);
+           drug.Accepted = isChecked;
+           _repositoryFactory.GetDrugRepository().Update(drug); 
         }
     }
 }
