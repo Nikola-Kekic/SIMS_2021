@@ -1,0 +1,32 @@
+﻿<Window x:Class="SIMS_2021.View.Pharmacist.DeleteDrug"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SIMS_2021.View.Pharmacist"
+        mc:Ignorable="d"
+        Title="DeleteDrug" Height="450" Width="800">
+    <Grid Background="White" Height="181" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="Ingredient" FontSize="20" Background="White" Foreground="Black" Grid.Row="0" Grid.Column="1">
+            Sifra leka:
+        </TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Name="CodeToDelete"/>
+
+        
+        <Button Name="Obrisi" Width="100" Grid.Row="4" Grid.Column="2" Click="Obrisi_Click" Grid.ColumnSpan="3" Margin="66,2,69,2">Dodaj</Button>
+    </Grid>
+</Window>

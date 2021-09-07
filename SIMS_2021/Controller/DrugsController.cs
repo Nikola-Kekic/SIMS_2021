@@ -20,6 +20,10 @@ namespace SIMS_2021.Controller
         {
             return _drugService.Add(drug);
         }
+        public void DeleteDrug(Drug drug)
+        {
+            _drugService.Delete(drug);
+        }
         public Drug MenageAccepted(long id, bool isChecked) 
         {
             _drugService.Update(id, isChecked);

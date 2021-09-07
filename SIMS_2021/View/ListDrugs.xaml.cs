@@ -46,6 +46,7 @@ namespace SIMS_2021.View
         private List<string> _drugFieldsStrings;
         private Cart _cart;
         private bool _addedButtons;
+        private bool _addedButtonsPharmacist;
 
         public ListDrugs()
         {
@@ -128,19 +129,26 @@ namespace SIMS_2021.View
 
                 if (_loggedInUser.UserType.Equals(UserType.Pharmacist))
                 {
-                    DrugDataGrid.Columns[6].Visibility = Visibility.Collapsed;
-                    DrugDataGrid.Columns[7].Visibility = Visibility.Collapsed;
+                    if (!_addedButtonsPharmacist)
+                    {
+                        DrugDataGrid.Columns[6].Visibility = Visibility.Collapsed;
+                        DrugDataGrid.Columns[7].Visibility = Visibility.Collapsed;
 
-                    DataGridTextColumn textColumn = new DataGridTextColumn();
-                    textColumn.Header = "Odobren";
-                    textColumn.Binding = new Binding("Accepted");
-                    DrugDataGrid.Columns.Add(textColumn);
+                        DataGridTextColumn textColumn = new DataGridTextColumn();
+                        textColumn.Header = "Odobren";
+                        textColumn.Binding = new Binding("Accepted");
+                        DrugDataGrid.Columns.Add(textColumn);
+
+                        _addedButtonsPharmacist = true;
+                    }
                 }
                 else if (_loggedInUser.UserType.Equals(UserType.Patient))
                 {
                     DrugDataGrid.Columns[6].Visibility = Visibility.Collapsed;
                     DrugDataGrid.Columns[7].Visibility = Visibility.Collapsed;
                     DrugDataGrid.Columns[8].Visibility = Visibility.Collapsed;
+                    DrugDataGrid.Columns[9].Visibility = Visibility.Collapsed;
+
 
                     if (!_addedButtons)
                     {
@@ -158,7 +166,11 @@ namespace SIMS_2021.View
                         _addedButtons = true;
                     }
 
-                } 
+                } else if (_loggedInUser.UserType.Equals(UserType.Doctor))
+                {
+                    DrugDataGrid.Columns[9].Visibility = Visibility.Collapsed;
+
+                }
             }
 
         }
@@ -331,7 +343,12 @@ namespace SIMS_2021.View
             return foundDrugsAnd;
         }
 
-      
+        private void DeleteDrug_Click(object sender, RoutedEventArgs e)
+        {
+            Drug toDelete = (Drug)((Button)(sender)).DataContext;
+            DeleteDrug deleteDrug = new DeleteDrug();
+            deleteDrug.Show(toDelete);
+        }
     }
 
 }

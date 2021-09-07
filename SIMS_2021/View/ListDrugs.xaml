@@ -90,6 +90,31 @@
 
                 </DataGridTemplateColumn>
 
+
+
+                <DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteDrug" Click="DeleteDrug_Click" >Obrisi
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="IsEnabled" Value="False" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Deleted}" Value="false">
+                                                <Setter Property="IsEnabled" Value="True" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+
+
+                </DataGridTemplateColumn>
+
+
             </DataGrid.Columns>
 
         </DataGrid>

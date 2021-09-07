@@ -30,6 +30,12 @@ namespace SIMS_2021.Service
             return drug;
         }
 
+        public void Delete(Drug drug)
+        {
+            drug.Deleted = true;
+            _repositoryFactory.GetDrugRepository().Update(drug);
+        }
+
         public bool Add(Drug drug)
         {
             Entity entity = null;
