@@ -18,6 +18,6 @@
         <Label x:Name="JmbgLabel" HorizontalAlignment="Left" Margin="553,208,0,0" VerticalAlignment="Top" FontSize="20" Content="{Binding JMBG}"/>
         <Label x:Name="AddressLabel" HorizontalAlignment="Left" Margin="553,260,0,0" VerticalAlignment="Top" FontSize="20" Content="{Binding MobileNumber}"/>
         <Label x:Name="EmailLabel" HorizontalAlignment="Left" Margin="553,312,0,0" VerticalAlignment="Top" FontSize="20" Content="{Binding Email}"/>
-        <Image HorizontalAlignment="Left" Height="169" Margin="100,164,0,0" VerticalAlignment="Top" Width="163" Source="../Icon/doctor.png"/>
+        <Image HorizontalAlignment="Left" Height="161" Margin="100,164,0,0" VerticalAlignment="Top" Width="176" Source="../Icon/icons8-user-96.png"/>
     </Grid>
 </UserControl>

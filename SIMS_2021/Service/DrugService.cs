@@ -23,6 +23,19 @@ namespace SIMS_2021.Service
 
             return drugs;
         }
+
+        public List<Drug> GetAllNotDeleted()
+        {
+            List<Drug> drugs = _repositoryFactory.GetDrugRepository().GetAll();
+            List<Drug> notDeleted = new List<Drug>();
+            foreach (Drug drug in drugs)
+            {
+                if (!drug.Deleted)
+                    notDeleted.Add(drug);
+            }
+
+            return notDeleted;
+        }
         public Drug GetOne(long Id)
         {
             Drug drug = _repositoryFactory.GetDrugRepository().GetOne(Id);

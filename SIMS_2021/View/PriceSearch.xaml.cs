@@ -22,11 +22,14 @@ namespace SIMS_2021.View
     {
         public string LowestPrice { get; set; }
         public string HighestPrice { get; set; }
-        public ListDrugs ListDrugs { get; set;}
+        public ListDrugs ListDrugs { get; set; }
 
         private static readonly Regex _regex = new Regex("[^0-9.-]+");
+
         public PriceSearch()
         {
+            LowestPrice = "";
+            HighestPrice = "";
             InitializeComponent();
             this.DataContext = this;
         }
@@ -34,6 +37,11 @@ namespace SIMS_2021.View
         private void Pretrazi_Click(object sender, RoutedEventArgs e)
         {
             if (!IsTextAllowed(HighestPrice) || !IsTextAllowed(LowestPrice))
+            {
+                MessageBox.Show("Forma nije pravilno popunjena.");
+                return;
+            }
+            else if ( HighestPrice == "" || LowestPrice == "" )
             {
                 MessageBox.Show("Forma nije pravilno popunjena.");
                 return;

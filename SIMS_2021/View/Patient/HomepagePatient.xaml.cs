@@ -80,7 +80,7 @@ namespace SIMS_2021.View.Patient
             this.CartView.Visibility = Visibility.Hidden;
             this.Bills.Visibility = Visibility.Hidden;
 
-            _drugs = _drugsController.GetAll();
+            _drugs = _drugsController.GetAllNotDeleted();
             this.Drugs.DataContext = _drugs;
             this.Drugs.SaveCurrentUser(_patient);
             this.Drugs.SaveCurrentCart(_cart);

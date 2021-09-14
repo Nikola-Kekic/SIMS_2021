@@ -12,6 +12,10 @@ namespace SIMS_2021.Controller
     {
         private DrugService _drugService = new DrugService();
 
+        public List<Drug> GetAllNotDeleted()
+        {
+            return _drugService.GetAllNotDeleted();
+        }
         public List<Drug> GetAll()
         {
             return _drugService.GetAll();

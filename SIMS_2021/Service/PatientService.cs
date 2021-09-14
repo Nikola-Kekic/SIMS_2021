@@ -63,7 +63,7 @@ namespace SIMS_2021.Service
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

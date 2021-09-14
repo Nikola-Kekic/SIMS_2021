@@ -27,6 +27,8 @@ namespace SIMS_2021.View
     {
         TransitionControl _transitionControl;
         private LoginController _loginController;
+        private int i = 0;
+        public Exception Exception { get; set; }
 
         public LogIn(TransitionControl transitionControl)
         {
@@ -35,31 +37,45 @@ namespace SIMS_2021.View
             _loginController = new LoginController();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e ) 
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             User user = _loginController.FindUser(JMBG.Text, Password.Password);
-            if (user == null)
+
+
+            if (user == null && i < 2)
             {
-                MessageBox.Show("Neuspesna prijava!");
+                ++i;
+                MessageBox.Show("Neuspesna prijava! Imate 3 pokusaja da se prijavite na sistem!\n " +
+                                "Broj pokusaja: " + i.ToString() + "\n");
                 return;
             }
-            
-            if (user.UserType.Equals(UserType.Doctor))
+            else if (user != null && i <= 2)
             {
-            _transitionControl.ParentWindow.ChangeContent(new HomepageDoctor(new TransitionControl(_transitionControl.ParentWindow), user));
+                if (user.UserType.Equals(UserType.Doctor))
+                {
+                    i = 0;
+                    _transitionControl.ParentWindow.ChangeContent(new HomepageDoctor(new TransitionControl(_transitionControl.ParentWindow), user));
+                }
+                else if (user.UserType.Equals(UserType.Patient))
+                {
+                    i = 0;
+                    _transitionControl.ParentWindow.ChangeContent(new HomepagePatient(new TransitionControl(_transitionControl.ParentWindow), user));
+                }
+                else if (user.UserType.Equals(UserType.Pharmacist))
+                {
+                    i = 0;
+                    _transitionControl.ParentWindow.ChangeContent(new HomepagePharmacist(new TransitionControl(_transitionControl.ParentWindow), user));
+                }
+                else
+                {
+                    MessageBox.Show("Greska prilikom unosa!");
+                }
             }
-            else if (user.UserType.Equals(UserType.Patient))
+            else
             {
-                _transitionControl.ParentWindow.ChangeContent(new HomepagePatient(new TransitionControl(_transitionControl.ParentWindow), user));
+                MessageBox.Show("Aplikacija se gasi!\nImali ste vise od 3 pokusaja.");
+                Application.Current.Shutdown();
             }
-            else if (user.UserType.Equals(UserType.Pharmacist)) 
-            {
-                _transitionControl.ParentWindow.ChangeContent(new HomepagePharmacist(new TransitionControl(_transitionControl.ParentWindow), user));
-            } else
-            {
-                MessageBox.Show("Greska prilikom unosa!");
-            }
-
         }
     }
 }

@@ -24,6 +24,7 @@ namespace SIMS_2021.View.Doctor
         private RejectedController _rejectedController;
         private long _drugId;
         private RejectedDrug rejected;
+        public ListDrugs ListDrugs { get; set; }
         public RejectDialog()
         {
             InitializeComponent();
@@ -31,8 +32,6 @@ namespace SIMS_2021.View.Doctor
             rejected = new RejectedDrug();
             _rejectedController = new RejectedController();
         }
-
-        public ListDrugs ListDrugs { get; set; }
 
         public void Show(long drugId)
         {

@@ -12,7 +12,6 @@
         ShowInTaskbar="True" 
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" 
-        SizeChanged="MainWindow_SizeChanged"
         MinHeight="450"
         MinWidth="400"
         ResizeMode="NoResize">

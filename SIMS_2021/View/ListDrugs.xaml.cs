@@ -47,9 +47,12 @@ namespace SIMS_2021.View
         private Cart _cart;
         private bool _addedButtons;
         private bool _addedButtonsPharmacist;
+        private List<Drug> allDrugs = new List<Drug>();
+        public List<Drug> foundDrugs { get; set; }
 
         public ListDrugs()
         {
+            foundDrugs = new List<Drug>();
             SearchParameterSelected = "";
             
             _drugFieldsStrings = typeof(Drug).GetProperties().Select(x => x.Name)
@@ -102,16 +105,19 @@ namespace SIMS_2021.View
         public void BindGrid(List<Drug> list)
         {
             this.DataContext = list;
-            ObservableCollection<Drug> _drugs = new ObservableCollection<Drug>();
+            ObservableCollection<Drug> drugs = new ObservableCollection<Drug>();
             // fill observale collection for filtering
             if (this.DataContext != null)
             {
                 foreach (var drug in (List<Drug>)this.DataContext)
                 {
-                    _drugs.Add(drug);
+                    drugs.Add(drug);
                 }
+                // list for filtering
+                allDrugs = (List<Drug>)DataContext;
+
                 // Collection which will take your ObservableCollection
-                _itemSourceList = new CollectionViewSource() { Source = _drugs };
+                _itemSourceList = new CollectionViewSource() { Source = drugs };
 
                 _itemSourceList.Filter += new FilterEventHandler(Filter);
 
@@ -252,41 +258,42 @@ namespace SIMS_2021.View
 
             var obj = e.Item as Drug;
 
-            List<Drug> allDrugs = (List<Drug>)DataContext;
-            List<Drug> foundDrugs = new List<Drug>();
 
-            if (TextIngredients.Contains('|'))
+            if (foundDrugs.Any(x => x.Code.Equals(obj.Code)))
             {
-                foundDrugs = SearchOr(allDrugs);
+                e.Accepted = true;
+            }
+            else
+            {
+                e.Accepted = false;
+            }
+        }
+        private void Button_Click_SearchIngredients(object sender, RoutedEventArgs e)
+        {
+            TextIngredients =  Search_Ingredients.Text;
+
+            //List<Drug> foundDrugs = new List<Drug>();
+
+            if (TextIngredients.Contains('(') || TextIngredients.Contains(')'))
+            {
+                foundDrugs = SearchBrackets();
             }
             else if (TextIngredients.Contains('&'))
             {
-                foundDrugs = SearchAnd(allDrugs);
+                foundDrugs = SearchAnd(TextIngredients);
             }
-            else if (TextIngredients == "")
+            else if (TextIngredients.Contains('|'))
             {
-                e.Accepted = false;
+                foundDrugs = SearchOr(TextIngredients);
             }
             else
             {
                 foundDrugs.AddRange(allDrugs.Where(x => x.Ingredients
                 .Keys.Contains(TextIngredients.Trim(), StringComparer.InvariantCultureIgnoreCase)).ToList());
             }
-            if (foundDrugs.Any(x => x.Code.Equals(obj.Code))) {
-                e.Accepted = true;
-            } else
-            {
-                e.Accepted = false;
-            }
 
-        }
-
-        private void Button_Click_SearchIngredients(object sender, RoutedEventArgs e)
-        {
-            TextIngredients =  Search_Ingredients.Text;
             SearchParameterSelected = "";
             _itemSourceList.View.Refresh();
-
         }
         private void Button_Click_SearchPrice(object sender, RoutedEventArgs e)
         {
@@ -301,9 +308,9 @@ namespace SIMS_2021.View
             SearchParameterSelected = "Price";
             _itemSourceList.View.Refresh();
         }
-        public List<Drug> SearchOr(List<Drug> allDrugs) 
+        public List<Drug> SearchOr(string operationString) 
         {
-            string[] stringOr = TextIngredients.Split('|');
+            string[] stringOr = operationString.Split('|');
 
             List<Drug> foundDrugsOr = new List<Drug>();
 
@@ -315,20 +322,23 @@ namespace SIMS_2021.View
 
             return foundDrugsOr;
         }
-        public List<Drug> SearchAnd(List<Drug> allDrugs)
+
+        public List<Drug> SearchAnd(string operationString)
         {
             List<Drug> foundDrugsAnd = new List<Drug>();
             foreach (var drug in allDrugs)
             {
                 foundDrugsAnd.Add(drug);
             }
-            string[] stringAnd = TextIngredients.Split('&');
+            string[] stringAnd = operationString.Split('&');
+            
             List<Drug> removeList = new List<Drug>();
             foreach (string s in stringAnd)
             {
+                string And = s.Trim(' ');
                 foreach (var drug in foundDrugsAnd)
                 {
-                    if (!drug.Ingredients.Keys.Contains(s.Trim(),
+                    if (!drug.Ingredients.Keys.Contains(s.Trim(' '),
                         StringComparer.InvariantCultureIgnoreCase))
                     {
                         removeList.Add(drug);
@@ -341,14 +351,184 @@ namespace SIMS_2021.View
                 foundDrugsAnd.Remove(drug);
             }
             return foundDrugsAnd;
+           
+        }
+        private List<Drug> SearchBrackets()
+        {
+            List<Drug> list = new List<Drug>();
+            
+            string[] stringBrackets = TextIngredients.Split('(', ')');
+            int checkOperation = -1;
+
+            string s = stringBrackets[1];
+            char[] characters = stringBrackets[1].ToCharArray();
+            for (int j = 0; j < s.Length; j++)
+            {
+                
+                if (characters[j] == '&')
+                {
+                   checkOperation = 0;
+                   list.AddRange(SearchAnd(stringBrackets[1]));
+                }
+                else if (characters[j] == '|')
+                {
+                   checkOperation = 1; 
+                   list.AddRange(SearchOr(stringBrackets[1]));
+                }
+
+            }
+            int notLimit;
+            if (stringBrackets[0] != "")
+            {
+                string strLeftBracket = stringBrackets[0];
+                notLimit  = strLeftBracket.Length;
+                char[] charactersLeftBracket = stringBrackets[0].ToCharArray();
+                for (int i = 0; i < notLimit; i++)
+                {
+                    if (charactersLeftBracket[i] == '&')
+                    {
+                        if (checkOperation == 1)
+                        {
+                            string mustHaveIngredient = stringBrackets[0].Replace("&", "");
+                            list = SearchOrWithAnd(s, mustHaveIngredient);
+                        }
+                        else
+                            list.AddRange(SearchAndModifie(stringBrackets[0], s));
+                    }
+                    else if (charactersLeftBracket[i] == '|')
+                    {
+                        list.AddRange(SearchOr(stringBrackets[0]));
+                    }
+                }
+            } else if (stringBrackets[2] != "")
+            {
+                string strRightBracket = stringBrackets[2];
+                char[] charactersRightBracket = stringBrackets[2].ToCharArray();
+                for (int i = 0; i < strRightBracket.Length; i++)
+                {
+                    if (charactersRightBracket[i] == '&')
+                    {
+                        if (checkOperation == 1)
+                        {
+                            string mustHaveIngredient = stringBrackets[2].Replace("&", "");
+                            list = SearchOrWithAnd(s, mustHaveIngredient);
+                        }
+                        else
+                            list.AddRange(SearchAndModifie(stringBrackets[2], s));
+
+                    }
+                    else if (charactersRightBracket[i] == '|')
+                    {
+                        list.AddRange(SearchOr(stringBrackets[2]));
+                    }
+                }
+            }
+
+            return list;
         }
 
+        public List<Drug> SearchOrWithAnd(string canHaveString, string mustHaveString)
+        {
+            List<Drug> foundDrugs = new List<Drug>();
+
+            List<Drug> foundDrugsAnd = new List<Drug>();
+
+
+            foundDrugsAnd.AddRange(allDrugs.Where(x => x.Ingredients
+                 .Keys.Contains(mustHaveString.Trim(), StringComparer.InvariantCultureIgnoreCase)).ToList());
+
+            string[] stringOr = canHaveString.Split('|');
+
+            foreach(string s in stringOr) 
+            {
+                foundDrugs.AddRange(foundDrugsAnd.Where(x => x.Ingredients.Keys.Contains(s.Trim(' '),
+                                StringComparer.InvariantCultureIgnoreCase)).ToList());
+            }
+
+            var distinctDrugs = foundDrugs.GroupBy(x => x.Id).Select(y => y.First()).ToList();
+
+            return distinctDrugs;
+        }
+
+        public List<Drug> SearchAndModifie(string operationString, string modifie) 
+            {
+            string str = modifie;
+            char[] characters2 = modifie.ToCharArray();
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (characters2[i] == '&')
+                {
+             
+                    char[] charactersCheck = operationString.ToCharArray();
+                    string strAnd ="";
+                    for (int j = 0; j<operationString.Length; j++) {
+                        if (charactersCheck[j] == '&' && charactersCheck[j-1] != ' ')
+                        {
+                            strAnd = operationString + " " + modifie;
+                            break;
+                        }
+                        else
+                        {
+                            strAnd = modifie + " " + operationString;
+                            break;
+                        }
+                    }
+                    string[] stringAnd = strAnd.Split('&');
+                    
+                    List<Drug> foundDrugsAnd = new List<Drug>();
+                    foreach (var drug in allDrugs)
+                    {
+                        foundDrugsAnd.Add(drug);
+                    }
+
+                    List<Drug> list = new List<Drug>();
+
+                    List<Drug> removeList = new List<Drug>();
+                    foreach (string s in stringAnd)
+                    {
+                        string And = s.Trim(' ');
+                        foreach (var drug in foundDrugsAnd)
+                        {
+                            if (!drug.Ingredients.Keys.Contains(s.Trim(' '),
+                                StringComparer.InvariantCultureIgnoreCase))
+                            {
+                                removeList.Add(drug);
+                            }
+                        }
+                    }
+
+                    foreach (Drug drug in removeList)
+                    {
+                        foundDrugsAnd.Remove(drug);
+                    }
+                    return foundDrugsAnd;
+
+                }
+                else if (characters2[i] == '|')
+                {
+                    string[] stringOr = operationString.Split('|');
+
+                    List<Drug> foundDrugsOr = new List<Drug>();
+
+                    foreach (string s in stringOr)
+                    {
+                        foundDrugsOr.AddRange(allDrugs.Where(x => x.Ingredients
+                         .Keys.Contains(s.Trim(), StringComparer.InvariantCultureIgnoreCase)).ToList());
+                    }
+
+                    return foundDrugsOr;
+                }
+            }
+
+            return null;
+        }
         private void DeleteDrug_Click(object sender, RoutedEventArgs e)
         {
             Drug toDelete = (Drug)((Button)(sender)).DataContext;
             DeleteDrug deleteDrug = new DeleteDrug();
             deleteDrug.Show(toDelete);
         }
+
     }
 
 }

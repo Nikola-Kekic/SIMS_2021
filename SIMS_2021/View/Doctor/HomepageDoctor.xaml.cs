@@ -64,10 +64,6 @@ namespace SIMS_2021.View.Doctor
             Application.Current.Shutdown();
         }
 
-        private void GridBarra_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
         private void IngredientsButton_Click(object sender, RoutedEventArgs e)
         {
             this.Drugs.Visibility = Visibility.Hidden;
@@ -84,7 +80,7 @@ namespace SIMS_2021.View.Doctor
             this.Ingredients.Visibility = Visibility.Hidden;
             this.Profile.Visibility = Visibility.Hidden;
             this.Patients.Visibility = Visibility.Hidden;
-            _drugs = _drugsController.GetAll();
+            _drugs = _drugsController.GetAllNotDeleted();
             this.Drugs.SaveCurrentUser(_doctor);
             this.Drugs.DataContext = _drugs;
             this.Drugs.BindGrid(_drugs);
@@ -100,11 +96,6 @@ namespace SIMS_2021.View.Doctor
             this.Patients.DataContext = _patients;
             this.Patients.BindGrid(_patients);
             this.Patients.Visibility = Visibility.Visible;
-
-        }
-
-        private void ManageDrugsButton_Click(object sender, RoutedEventArgs e)
-        {
 
         }
     }
